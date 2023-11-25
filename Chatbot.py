@@ -5,7 +5,7 @@ import pickledb
 # with st.sidebar:
 openai_api_key = st.secrets["OPENAI_KEY"]
 
-db = pickledb.load('llm_prompts.db', False)
+db = pickledb.load('llm_prompts.db', True)
 db.set('prompt1', 'what is love')
 get_prompt = db.get('prompt1')
 print(get_prompt)
