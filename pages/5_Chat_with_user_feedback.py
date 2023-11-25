@@ -1,7 +1,7 @@
 from openai import OpenAI
 import streamlit as st
-from streamlit_feedback import streamlit_feedback
-import trubrics
+# from streamlit_feedback import streamlit_feedback
+from trubrics.integrations.streamlit import FeedbackCollector
 
 openai_api_key = st.secrets["OPENAI_KEY"]
 
@@ -57,17 +57,18 @@ if "response" in st.session_state and st.session_state["response"]:
     # The return value of streamlit_feedback() is just a dict.
     # Configure your own account at https://trubrics.streamlit.app/
     if feedback :
-        config = trubrics.init(
-            # email = st.secrets["TRUBRICS_EMAIL"] 
-            # password = st.secrets["TRUBRICS_PASSWORD"]
-            email = "eric@amelio.tv",
-            password = "1Dolfino!"
+        collector = FeedbackCollector(email=st.secrets.TRUBRICS_EMAIL, password=st.secrets.TRUBRICS_PASSWORD, project="default")
+
+        user_feedback = collector.st_feedback(
+            component="default",
+            feedback_type="thumbs",
+            open_feedback_label="[Optional] Provide additional feedback",
+            model=use_model,
+            prompt_id=None,  # checkout collector.log_prompt() to log your user prompts
         )
-        collection = trubrics.collect(
-            component_name="default",
-            model="gpt",
-            response=feedback,
-            metadata={"chat": messages},
-        )
-        trubrics.save(config, collection)
-        st.toast("Feedback recorded!", icon="📝")
+
+        if user_feedback:
+            st.toast("Feedback recorded!", icon="📝")
+
+        
+        
