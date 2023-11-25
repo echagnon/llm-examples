@@ -5,7 +5,7 @@ from trubrics.integrations.streamlit import FeedbackCollector
 
 openai_api_key = st.secrets["OPENAI_KEY"]
 
-st.title("📝 Chat with feedback (Trubrics - updated)")
+st.title("📝 Chat with feedback (Trubrics)")
 
 gpt_choice = st.radio(
     "Which GPT do you want to use?",
