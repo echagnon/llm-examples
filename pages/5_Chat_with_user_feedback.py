@@ -7,6 +7,16 @@ openai_api_key = st.secrets["OPENAI_KEY"]
 
 st.title("📝 Chat with feedback (Trubrics)")
 
+gpt_choice = st.radio(
+    "Which GPT do you want to use?",
+    ["GPT3.5", ":rainbow[GPT4.0]"],
+    captions = ["Most economical", "Best of the best"])
+
+if gpt_choice == "GPT3.5" : 
+    use_model = "gpt-3.5-turbo"
+else : 
+    use_model = "gpt-4-1106-preview"
+
 """
 In this example, we're using [streamlit-feedback](https://github.com/trubrics/streamlit-feedback) and Trubrics to collect and store feedback
 from the user about the LLM responses.
@@ -31,7 +41,7 @@ if prompt := st.chat_input(placeholder="Tell me a joke about sharks"):
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
     client = OpenAI(api_key=openai_api_key)
-    response = client.chat.completions.create(model="gpt-3.5-turbo", messages=messages)
+    response = client.chat.completions.create(model=use_model, messages=messages)
     st.session_state["response"] = response.choices[0].message.content
     with st.chat_message("assistant"):
         messages.append({"role": "assistant", "content": st.session_state["response"]})
