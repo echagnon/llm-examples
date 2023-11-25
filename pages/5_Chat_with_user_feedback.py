@@ -60,7 +60,7 @@ if "response" in st.session_state and st.session_state["response"]:
         config = trubrics.init(
             # email = st.secrets["TRUBRICS_EMAIL"] 
             # password = st.secrets["TRUBRICS_PASSWORD"]
-            email = "eric@amelio.tv"
+            email = "eric@amelio.tv",
             password = "1Dolfino!"
         )
         collection = trubrics.collect(
