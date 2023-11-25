@@ -58,8 +58,8 @@ if "response" in st.session_state and st.session_state["response"]:
     # Configure your own account at https://trubrics.streamlit.app/
     if feedback and "TRUBRICS_EMAIL" in st.secrets:
         config = trubrics.init(
-            email=st.secrets.TRUBRICS_EMAIL,
-            password=st.secrets.TRUBRICS_PASSWORD,
+            email = st.secrets["TRUBRICS_EMAIL"] 
+            password = st.secrets["TRUBRICS_PASSWORD"]
         )
         collection = trubrics.collect(
             component_name="default",
