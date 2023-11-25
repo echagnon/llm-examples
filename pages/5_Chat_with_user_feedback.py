@@ -3,11 +3,7 @@ import streamlit as st
 from streamlit_feedback import streamlit_feedback
 import trubrics
 
-with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", key="feedback_api_key", type="password")
-    "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
-    "[View the source code](https://github.com/streamlit/llm-examples/blob/main/pages/5_Chat_with_user_feedback.py)"
-    "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
+openai_api_key = st.secrets["OPENAI_KEY"]
 
 st.title("📝 Chat with feedback (Trubrics)")
 
