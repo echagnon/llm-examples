@@ -56,10 +56,12 @@ if "response" in st.session_state and st.session_state["response"]:
     # This app is logging feedback to Trubrics backend, but you can send it anywhere.
     # The return value of streamlit_feedback() is just a dict.
     # Configure your own account at https://trubrics.streamlit.app/
-    if feedback and "TRUBRICS_EMAIL" in st.secrets:
+    if feedback :
         config = trubrics.init(
-            email = st.secrets["TRUBRICS_EMAIL"] 
-            password = st.secrets["TRUBRICS_PASSWORD"]
+            # email = st.secrets["TRUBRICS_EMAIL"] 
+            # password = st.secrets["TRUBRICS_PASSWORD"]
+            email = "eric@amelio.tv"
+            password = "1Dolfino!"
         )
         collection = trubrics.collect(
             component_name="default",
