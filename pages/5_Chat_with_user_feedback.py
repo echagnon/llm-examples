@@ -5,7 +5,7 @@ import trubrics
 
 openai_api_key = st.secrets["OPENAI_KEY"]
 
-st.title("📝 Chat with feedback (Trubrics)")
+st.title("📝 Chat with feedback (Trubrics - updated)")
 
 gpt_choice = st.radio(
     "Which GPT do you want to use?",
