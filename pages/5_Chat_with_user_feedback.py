@@ -47,7 +47,7 @@ if prompt := st.chat_input(placeholder="Tell me a joke about sharks"):
         messages.append({"role": "assistant", "content": st.session_state["response"]})
         st.write(st.session_state["response"])
 
-if st.session_state["response"]:
+if "response" in st.session_state and st.session_state["response"]:
     feedback = streamlit_feedback(
         feedback_type="thumbs",
         optional_text_label="[Optional] Please provide an explanation",
