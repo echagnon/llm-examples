@@ -5,7 +5,7 @@ from langchain.callbacks import StreamlitCallbackHandler
 from langchain.chat_models import ChatOpenAI
 from langchain.tools import DuckDuckGoSearchRun
 
-st.secrets["OPENAI_KEY"]
+openai_api_key = st.secrets["OPENAI_KEY"]
 
 st.title("🔎 LangChain - Chat with search")
 
