@@ -1,9 +1,10 @@
 from openai import OpenAI
 import streamlit as st
+import os
 # import pickledb
 
 # with st.sidebar:
-openai_api_key = st.secrets["OPENAI_KEY"]
+openai_api_key = os.environ['OPENAI_KEY']
 
 # db = pickledb.load('llm_prompts.db', True)
 # db.set('prompt1', 'what is love')
